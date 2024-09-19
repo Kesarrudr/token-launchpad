@@ -11,16 +11,13 @@ function extractPath(url: string): string {
   const pathEndIndex = endIndex === -1 ? url.length : endIndex;
 
   const value =
-    "https://d24kigf08msahl.cloudfront.net/" +
-    url.substring(startIndex, pathEndIndex);
+    import.meta.env.VITE_CDN + url.substring(startIndex, pathEndIndex);
 
   return value;
 }
 async function uploadJson(formData: FormData) {
   try {
-    const resposnse = await axios.get(
-      "https://wallet-backend.kesartechnologies.software/url",
-    );
+    const resposnse = await axios.get(import.meta.env.VITE_BACKEND_URL ?? "");
     const { ImageUrl, DataUrl } = resposnse.data.message;
 
     const jsonData: metadataJson = {

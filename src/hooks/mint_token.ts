@@ -39,7 +39,6 @@ const useMintToken = (formData: FormData) => {
       setLoading(true);
       if (formData) {
         try {
-          console.log("uplaodig data");
           const URL = await uploadJson(formData);
           if (URL) {
             formData.URL = URL;
@@ -52,7 +51,6 @@ const useMintToken = (formData: FormData) => {
             autoClose: 3000,
             position: "bottom-right",
           });
-          console.log(error);
           throw new Error("upload failed");
         }
       }
@@ -160,7 +158,6 @@ const useMintToken = (formData: FormData) => {
           isLoading: true,
         });
         if (formData.revokeMint) {
-          console.log("revoting mint AuthorityType");
           const transaction4 = new Transaction().add(
             createSetAuthorityInstruction(
               mintKeypair.publicKey,
@@ -172,7 +169,6 @@ const useMintToken = (formData: FormData) => {
             ),
           );
           createMintTranscation.add(transaction4);
-          console.log("mint AuthorityType done");
         }
 
         //TODO: roveko the token update authority
@@ -200,14 +196,12 @@ const useMintToken = (formData: FormData) => {
         });
       }
     } catch (error) {
-      console.log("In the big try cat");
       toast.update(loadingToastid, {
         render: "Error while Minting the Coin",
         type: "error",
         isLoading: false,
         autoClose: 3000,
       });
-      console.log(error);
       return;
     } finally {
       setLoading(false);
