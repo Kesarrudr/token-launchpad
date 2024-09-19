@@ -1,6 +1,6 @@
 # Solana Token Creator
 
-![Solana Token Creator Logo](/public/token-creator-icon.svg)
+![Solana Token Creator Logo](/public/vite.svg)
 
 ## Overview
 
